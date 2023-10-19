@@ -64,24 +64,6 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:title>$loc/strings/M104</sch:title>
-        <sch:rule
-            context="//gmd:topicCategory">
-            <sch:let name="code" value="gmd:MD_TopicCategoryCode[
-            	normalize-space(.)='planningCadastre' or
-            	normalize-space(.)='geoscientificInformation' or
-            	normalize-space(.)='imageryBaseMapsEarthCover' or
-            	normalize-space(.)='environment']"/>
-        	<sch:let name="sibling" value="../gmd:topicCategory/gmd:MD_TopicCategoryCode[starts-with(normalize-space(.), concat(normalize-space($code), '_'))]"/>
-
-            <sch:let name="legalTopicCategory" value="($code and $sibling) or not($code)"/>
-
-            <!--  Check that basicGeodataId is defined -->
-            <sch:assert test="$legalTopicCategory">$loc/strings/alert.M104</sch:assert>
-            <sch:report test="$legalTopicCategory"><sch:value-of select="$loc/strings/report.M104/div"/></sch:report>
-        </sch:rule>
-    </sch:pattern>
-    <sch:pattern>
         <sch:title>$loc/strings/M105</sch:title>
         <sch:rule
             context="//che:CHE_CI_ResponsibleParty">
